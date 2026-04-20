@@ -38,7 +38,7 @@ echo "--- Tarea 1: Sentimiento de un texto ---"
 # TODO: Reemplaza ___ con el texto de la primera noticia (copia el titulo)
 # Ejemplo: "Inteligencia artificial impulsa la productividad en empresas latinoamericanas"
 aws comprehend detect-sentiment \
-  --text "___" \
+  --text "Inteligencia artificial impulsa la productividad en empresas latinoamericanas" \
   --language-code ___ \
   --region us-east-1 \
   --output json
@@ -59,7 +59,7 @@ echo "--- Tarea 2: Deteccion de idioma ---"
 # TODO: Completa el comando para detectar el idioma del texto
 # Usa el titulo de la noticia de deportes como texto de prueba
 aws comprehend detect-dominant-language \
-  --text "___" \
+  --text "Seleccion mexicana clasifica al Mundial 2026 con victoria historica" \
   --region us-east-1 \
   --output json
 
@@ -92,12 +92,12 @@ echo ""
 # Pista: Copia los titulos del output anterior y usalos en --text-list
 aws comprehend batch-detect-sentiment \
   --text-list \
-    "___" \
-    "___" \
-    "___" \
-    "___" \
-    "___" \
-  --language-code ___ \
+    "Inteligencia artificial impulsa la productividad en empresas latinoamericanas" \
+    "Crisis hidrica en el norte de Mexico afecta a miles de familias" \
+    "Seleccion mexicana clasifica al Mundial 2026 con victoria historica" \
+    "Banco central mantiene tasas de interes sin cambios ante incertidumbre global" \
+    "Cientificos mexicanos desarrollan biomaterial para tratamiento de fracturas oseas" \
+  --language-code es \
   --region us-east-1 \
   --output json
 
