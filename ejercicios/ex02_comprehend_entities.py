@@ -60,8 +60,8 @@ def detectar_entidades(texto, idioma='es'):
     # Pista: El metodo se llama detect_entities()
     # Pista: Necesita dos parametros: Text y LanguageCode
     respuesta = comprehend.detect_entities(
-        Text=___,
-        LanguageCode=___
+        Text=texto,
+        LanguageCode=idioma
     )
     return respuesta['Entities']
 
@@ -110,8 +110,8 @@ def detectar_pii(texto, idioma='es'):
     # TODO: Completa la llamada a detect_pii_entities
     # Pista: Los parametros son iguales que detect_entities (Text, LanguageCode)
     respuesta = comprehend.detect_pii_entities(
-        Text=___,
-        LanguageCode=___
+        Text=texto,
+        LanguageCode=idioma
     )
     return respuesta['Entities']
 
@@ -131,7 +131,7 @@ for idx in [2, 3]:  # indices 0-based para noticias 3 y 4
         for pii in pii_encontrado:
             # TODO: Extrae el texto del PII usando la posicion (BeginOffset, EndOffset)
             # Pista: texto_pii = noticia['texto'][pii['BeginOffset']:pii['EndOffset']]
-            texto_pii = noticia['texto'][pii[___]:pii[___]]
+            texto_pii = noticia['texto'][pii['BeginOffset']:pii['EndOffset']]
             print(f"    - Tipo: {pii['Type']}, Texto: {texto_pii}, Confianza: {pii['Score']:.2%}")
     else:
         print("  No se detecto PII")
@@ -160,13 +160,13 @@ resumen = {}
 # Pista: Llama a detectar_entidades() para cada noticia
 # Pista: Usa set() para obtener tipos unicos
 for i, noticia in enumerate(noticias):
-    entidades = detectar_entidades(___['texto'])
+    entidades = detectar_entidades(noticia['texto'])
 
-    tipos_unicos = list(set([e[___] for e in entidades]))
+    tipos_unicos = list(set([e['Type'] for e in entidades]))
 
     resumen[f"noticia_{i + 1}"] = {
         'titulo': noticia['titulo'],
-        'entidades': len(___),
+        'entidades': len(entidades),
         'tipos': tipos_unicos
     }
 

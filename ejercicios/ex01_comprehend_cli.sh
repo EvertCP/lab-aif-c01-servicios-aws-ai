@@ -39,7 +39,7 @@ echo "--- Tarea 1: Sentimiento de un texto ---"
 # Ejemplo: "Inteligencia artificial impulsa la productividad en empresas latinoamericanas"
 aws comprehend detect-sentiment \
   --text "Inteligencia artificial impulsa la productividad en empresas latinoamericanas" \
-  --language-code ___ \
+  --language-code es \
   --region us-east-1 \
   --output json
 

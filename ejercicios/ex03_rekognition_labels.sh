@@ -23,6 +23,8 @@
 # Documentacion AWS CLI:
 #   https://docs.aws.amazon.com/cli/latest/reference/rekognition/
 # =============================================================================
+import boto3
+import json
 
 echo "=========================================="
 echo " Ejercicio 3: Rekognition - Labels y Faces"
@@ -48,7 +50,11 @@ echo ""
 echo "--- Tarea 1: Labels en ciudad.jpg ---"
 
 # >>> TU COMANDO AQUI <<<
-
+aws rekognition detect-labels \
+    --region us-east-1 \
+    --image-bytes fileb://data/imagenes/ciudad.jpg \
+    --max-labels 10 \
+    --min-confidence 80
 
 echo ""
 
@@ -69,7 +75,10 @@ echo ""
 echo "--- Tarea 2: Faces en equipo.jpg ---"
 
 # >>> TU COMANDO AQUI <<<
-
+aws rekognition detect-faces \
+    --region us-east-1 \
+    --image-bytes fileb://data/imagenes/equipo.jpg \
+    --attributes "ALL"
 
 echo ""
 echo "=========================================="
